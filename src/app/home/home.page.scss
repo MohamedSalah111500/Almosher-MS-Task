@@ -1,0 +1,62 @@
+ion-toolbar {
+  font-size: 14px;
+
+  ion-title {
+    font-size: 13px;
+    color: var(--ion-color-medium);
+    line-height: 22px;
+
+    span {
+      color: var(--ion-color-primary);
+    }
+  }
+}
+.spinner {
+  display: block;
+  margin: 30% auto;
+}
+// <<<<<<<<  custom style for home slider ********** >>>
+ion-slides {
+  --bullet-background: var(--ion-color-light);
+  --bullet-background-active: var(--ion-color-primary);
+  padding-inline-start: 10px;
+  .slide-img {
+    background-color: var(--ion-color-white);
+    background-size: cover;
+    background-position: center center;
+    border-radius: 6px;
+    width: 100%;
+    height: 100px;
+    span {
+      position: absolute;
+      bottom: 7px;
+      right: 7px;
+      font-size: 14px;
+      color: white;
+      text-shadow: 1px 1px 1px #00000052;
+    }
+    &.active {
+      border: 2px solid;
+    }
+  }
+}
+
+ion-footer {
+  height: 65px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 14px;
+  .badg-cart {
+    position: relative;
+    ion-badge {
+      padding: 4px 0;
+      position: absolute;
+      font-size: 11px;
+      left: 20px;
+      height: 20px;
+      width: 20px;
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,65 @@
+<ion-toolbar>
+  <ion-buttons slot="end"> مساعده </ion-buttons>
+  <ion-title>
+    <ion-icon name="car-outline"></ion-icon>
+    توصيل الي
+    <span
+      >القاهره الجديده <ion-icon name="chevron-down-outline"></ion-icon
+    ></span>
+  </ion-title>
+  <ion-buttons slot="start">
+    <ion-icon name="chevron-forward-outline"></ion-icon>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content color="light">
+  <ion-grid class="ion-no-padding" *ngIf="allCategory" fixed>
+    <ion-spinner class="spinner" *ngIf="!allCategory.length"></ion-spinner>
+    <!-- Top Slide List -->
+    <div class="ion-padding-vertical">
+      <ion-slides dir="ltr" [options]="categoresSliderConfig">
+        <ion-slide
+          *ngFor="let category of allCategory"
+          expand="block"
+          (click)="selectCategory(category.id)"
+        >
+          <div
+            class="slide-img"
+            [ngClass]="{'active': activeCategoryId === category.id}"
+            [ngStyle]="{'background-image':'url(' +category?.image+ ')'}"
+          >
+            <span>{{category.name}}</span>
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+
+    <ion-row class="">
+      <ion-col
+        class="ion-text-center"
+        size-xs="6"
+        size-lg="2"
+        *ngFor="let more of activeProducts ;let i = index"
+      >
+        <app-item [data]="more" (counter)="changeCount($event)"></app-item>
+      </ion-col>
+      <br />
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <div>
+    <p>
+      <span>الحساب</span><br />
+      {{ totalCount | async | arabicNum }} <span>ج.م</span>
+    </p>
+  </div>
+  <div>
+    <p>التوصيل مجاني</p>
+  </div>
+
+  <div class="badg-cart">
+    <ion-icon size="large" name="cart-outline" class="badg-cart"></ion-icon>
+    <ion-badge> {{itemsLenth | async }} </ion-badge>
+  </div>
+</ion-footer>

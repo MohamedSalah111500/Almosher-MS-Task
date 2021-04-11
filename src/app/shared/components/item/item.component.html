@@ -1,0 +1,32 @@
+<div class="shop-item">
+  <img [src]="data?.image" />
+  <div class="info">
+    <p>{{ data?.description | slice: 0:14 }}</p>
+    <span class="item-price"
+      >{{ data?.price | arabicNum }} <span>ج.م</span></span
+    >
+  </div>
+  <div class="counter" *ngIf="count">
+    <ion-button
+      fill="clear"
+      [disabled]="count < 1"
+      (click)="changeCount('decrease')"
+      size="small"
+    >
+      <ion-icon name="remove-outline" slot="icon-only" size="small"></ion-icon>
+    </ion-button>
+    <span class="label-quantity"> {{ count }} </span>
+    <ion-button fill="clear" (click)="changeCount('increase')" size="small">
+      <ion-icon name="add-outline" slot="icon-only" size="small"></ion-icon>
+    </ion-button>
+  </div>
+  <ion-button
+    *ngIf="count < 1"
+    shape="round"
+    color="primary"
+    (click)="changeCount('increase')"
+    size="small"
+  >
+    اضف الي السله
+  </ion-button>
+</div>
